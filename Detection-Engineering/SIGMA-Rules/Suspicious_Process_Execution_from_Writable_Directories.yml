@@ -14,7 +14,7 @@ logsource:
     product: windows
 detection:
     selection_path:
-        Image|contains:
+        process.executable|contains:
             - '\AppData\Local\Temp\'
             - '\Windows\Tasks\'
             - '\Users\Public\'
@@ -22,29 +22,29 @@ detection:
             - '\ProgramData\'
             - '\$Recycle.Bin\'
     selection_ext:
-        Image|endswith:
+        process.executable|endswith:
             - '.exe'
             - '.scr'
             - '.com'
             - '.pif'
             - '.cpl'
     filter_legitimate_installers:
-        Image|contains:
+        process.executable|contains:
             - '\AppData\Local\Temp\is-'
             - '\AppData\Local\Temp\7z'
             - '\AppData\Local\Temp\ns'
     filter_onedrive:
-        Image|contains:
+        process.executable|contains:
             - '\AppData\Local\Microsoft\OneDrive\'
     filter_legitimate_updaters:
-        Image|endswith:
+        process.executable|endswith:
             - '\OneDriveSetup.exe'
             - '\TeamsSetup.exe'
             - '\GoogleUpdate.exe'
             - '\DropboxUpdate.exe'
     condition: selection_path and selection_ext and not 1 of filter_*
 fields:
-  - Image
+  - process.executable
   - CommandLine
   - ParentImage
   - ParentCommandLine
