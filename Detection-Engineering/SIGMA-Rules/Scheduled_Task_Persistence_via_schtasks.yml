@@ -17,11 +17,11 @@ detection:
     selection_img:
         process.executable|endswith: '\schtasks.exe'
     selection_cmd:
-        CommandLine|contains:
+        process.command_line|contains:
         - '/create'
         - '/change'
     selection_suspicious:
-        CommandLine|contains:
+        process.command_line|contains:
         - '/RU SYSTEM'
         - '/SC ONLOGON'
         - '/SC ONSTART'
