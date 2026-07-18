@@ -1,0 +1,39 @@
+title: Scheduled Task Persistence via schtasks
+id: 41c061ac-ae18-4f5f-86b1-1c63b16c55e2
+status: test
+description: Detects the creation or modification of Windows Scheduled Tasks using schtasks.exe, which may indicate persistence or privilege escalation.
+references:
+    - https://attack.mitre.org/techniques/T1053/005/
+    - https://learn.microsoft.com/en-us/windows/win32/taskschd/about-the-task-scheduler
+author: Saeed Elfiky
+date: 2026-07-18
+tags:
+    - attack.persistence
+    - attack.t1053.005
+logsource:
+    product: windows
+    category: process_creation
+detection:
+    selection_img:
+        Image|endswith: '\schtasks.exe'
+    selection_cmd:
+        CommandLine|contains:
+        - '/create'
+        - '/change'
+    selection_suspicious:
+        CommandLine|contains:
+        - '/RU SYSTEM'
+        - '/SC ONLOGON'
+        - '/SC ONSTART'
+        - '/RL HIGHEST'
+    condition: selection_img and selection_cmd and selection_suspicious
+fields:
+  - Image
+  - CommandLine
+  - ParentImage
+  - User
+falsepositives:
+    - Legitimate administrative scheduled task creation
+    - Enterprise software installers
+    - Windows Update or system management tools
+level: medium
