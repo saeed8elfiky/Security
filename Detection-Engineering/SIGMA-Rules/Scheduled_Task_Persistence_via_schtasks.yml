@@ -22,10 +22,10 @@ detection:
         - '/change'
     selection_suspicious:
         process.command_line|contains:
-        - '/RU SYSTEM'
-        - '/SC ONLOGON'
-        - '/SC ONSTART'
-        - '/RL HIGHEST'
+        - '/ru SYSTEM'
+        - '/sc ONLOGON'
+        - '/sc ONSTART'
+        - '/rl HIGHEST'
     condition: selection_img and selection_cmd and selection_suspicious
 fields:
   - process.executable
