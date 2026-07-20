@@ -116,49 +116,49 @@ The workflow sends automated notifications after quarantine actions are complete
 1. **Creating Policy to Block `Facbook.com`**
     - This policy acts as a security control layer to enforce application restriction at the edge.
    <p align="center">
-      <img src="/images/n8n_incident_Response/facebook_block.png" width="900">
+      <img src="assets/facebook_block.png" width="900">
    </p>
 2. **Attach it to the LAN Policy**
     - The block rule is associated with the LAN → WAN policy chain to ensure internal users are affected when they attempt outbound traffic.
    <p align="center">
-      <img src="/images/n8n_incident_Response/attach_facebook_policy.png" width="900">
+      <img src="assets/attach_facebook_policy.png" width="900">
    </p>
 3. **Create Address group**
     - An address group is created to logically group affected hosts (e.g., quarantined endpoints, suspicious devices, or users under restriction).
    <p align="center">
-      <img src="/images/n8n_incident_Response/create_Address_group.png" width="900">
+      <img src="assets/create_Address_group.png" width="900">
    </p>
 4. **Create `QUARANTINE` Policy and attatch the Address Group to it.**
     - A dedicated quarantine policy is created to isolate or restrict compromised or suspicious devices.
    <p align="center">
-      <img src="/images/n8n_incident_Response/create_quarantine_policy.png" width="900">
+      <img src="assets/create_quarantine_policy.png" width="900">
    </p>
 > [!NOTE]
 > The QUARANTINE policy must be placed at the top of the firewall policy list to ensure it takes priority over general LAN → WAN allow rules due to FortiGate’s top-down rule evaluation model.
 
 5. **Try to access `facebook.com`**
    <p align="center">
-      <img src="/images/n8n_incident_Response/win7_oisolated.png" width="900">
+      <img src="assets/win7_oisolated.png" width="900">
    </p>
 6. **Create Detection Rule using threshold method**
     - triggers an alert when a single device attempts to access blocked websites multiple times, exceeding a set threshold.
     - **Trigger Condition:** It looks for logs where the block reason is "Local URLfilter Block", aggregated by source.ip.
     - **Threshold:** An alert fires if a single IP address generates 10 or more violations.
    <p align="center">
-      <img src="/images/n8n_incident_Response/web_detection_rule.png" width="900">
+      <img src="assets/web_detection_rule.png" width="900">
    </p>
 
 7. **Starting n8n Workflow**
    <p align="center">
-      <img src="/images/n8n_incident_Response/n8n.png" width="900">
+      <img src="assets/n8n.png" width="900">
    </p>
 8. **Check Case Creation and Isolating Process**
     - The workflow automatically creates an incident case within Kibana and attaches the relevant alert data for the analyst.
    <p align="center">
-      <img src="/images/n8n_incident_Response/case.png" width="900">
+      <img src="assets/case.png" width="900">
    </p>
 9. **Target Eliminated**
     - The playbook executes a containment action, successfully isolating the compromised or violating host machine from the network to prevent further risk.
     <p align="center">
-      <img src="/images/n8n_incident_Response/target_isolated.png" width="900">
+      <img src="assets/target_isolated.png" width="900">
    </p>
