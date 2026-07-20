@@ -2,13 +2,13 @@
 
 **By:** Saeed Elfiky
 
-![Gemini_Generated_Image_.png](Gemini_Generated_Image_.png)
+![Gemini_Generated_Image_.png](assets/Gemini_Generated_Image_.png)
 
 # **What is SIEM?**
 
 In general definition SIEM stands for Security information and event management, ln basic terms SIEM is a solution that aggregates log and event data, threat intelligence, and security alerts to provide actionable insight on potential security events.
 
-![Untitled-2026-06-25-1802.excalidraw.svg](Untitled-2026-06-25-1802.excalidraw.svg)
+![Untitled-2026-06-25-1802.excalidraw.svg](assets/Untitled-2026-06-25-1802.excalidraw.svg)
 
 # How does it work?
 
@@ -20,7 +20,7 @@ SIEM collects security events from various sources, such as Operating Systems, D
 
 For example, let's look at a standard laptop as our target endpoint to monitor. In many cases, an agent is installed on the endpoint to collect logs and forward them to the SIEM, although some data sources use APIs, Syslog, or other collection methods.
 
-![lap.svg](lap.svg)
+![lap.svg](assets/lap.svg)
 
 ## 2. Normalization
 
