@@ -1,0 +1,130 @@
+PUT _ingest/pipeline/logs-kaspersky_ksc.critical_network_attack
+{
+    "description": """kaspersky event_type: 	Network Attack Detected""",
+    "processors": [
+      {
+        "set": {
+          "field": "event.type",
+          "override": false,
+          "ignore_empty_value": true,
+          "copy_from": "kaspersky.event_type"
+        }
+      },
+      {
+        "rename": {
+          "field": "kaspersky.parameter1",
+          "target_field": "kaspersky.threat_type",
+          "ignore_missing": true
+        }
+      },
+      {
+        "rename": {
+          "field": "kaspersky.parameter2",
+          "target_field": "network.transport",
+          "ignore_missing": true
+        }
+      },
+      {
+        "rename": {
+          "field": "kaspersky.parameter3",
+          "target_field": "source.ip",
+          "ignore_missing": true
+        }
+      },
+      {
+        "rename": {
+          "field": "kaspersky.parameter4",
+          "target_field": "destination.port",
+          "ignore_missing": true
+        }
+      },
+      {
+        "rename": {
+          "field": "kaspersky.parameter5",
+          "target_field": "source.ip",
+          "ignore_missing": true
+        }
+      },
+      {
+        "rename": {
+          "field": "kaspersky.parameter6",
+          "target_field": "destination.ip",
+          "ignore_missing": true
+        }
+      },
+      {
+        "script": {
+          "source": """String toIPv4(def ipVal) {
+  if (ipVal instanceof String && ipVal.contains(".")) {
+    return ipVal; // already valid IP
+  }
+
+  long ipLong = (ipVal instanceof String)
+    ? Long.parseLong(ipVal)
+    : ipVal;
+
+  if (ipLong < 0 || ipLong > 4294967295L) {
+    return null;
+  }
+
+  return ((ipLong >> 24) & 0xFF) + "." +
+         ((ipLong >> 16) & 0xFF) + "." +
+         ((ipLong >> 8) & 0xFF) + "." +
+         (ipLong & 0xFF);
+}
+
+// source
+if (ctx.source != null && ctx.source.ip != null) {
+  def converted = toIPv4(ctx.source.ip);
+  if (converted != null) {
+    ctx.source.ip = converted;
+  }
+}
+
+// destination
+if (ctx.destination != null && ctx.destination.ip != null) {
+  def converted = toIPv4(ctx.destination.ip);
+  if (converted != null) {
+    ctx.destination.ip = converted;
+  }
+}"""
+        }
+      },
+      {
+        "rename": {
+          "field": "kaspersky.parameter8",
+          "target_field": "source.port",
+          "ignore_missing": true
+        }
+      },
+      {
+        "script": {
+          "lang": "painless",
+          "source": """
+if (ctx.kaspersky != null && ctx.kaspersky.parameter7 != null) {
+  String rawMac = ctx.kaspersky.parameter7;
+
+  if (rawMac.length() == 12) {
+    StringBuilder formattedMac = new StringBuilder();
+    for (int i = 0; i < rawMac.length(); i++) {
+      formattedMac.append(rawMac.charAt(i));
+    
+      if ((i + 1) % 2 == 0 && (i + 1) < rawMac.length()) {
+        formattedMac.append(':');
+      }
+    }
+    ctx.source = ctx.source ?: [:];
+    ctx.source.mac = formattedMac.toString();
+  }
+}"""
+        }
+      },
+      {
+        "rename": {
+          "field": "kaspersky.parameter7",
+          "target_field": "source.mac",
+          "ignore_missing": true
+        }
+      }
+    ]
+}

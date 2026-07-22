@@ -28,5 +28,5 @@ fields:
   - process.parent.command_line
   - user.name
 falsepositives:
-    - 
+    - Highly unlikely in standard environment
 level: Critical
