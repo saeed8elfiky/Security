@@ -1,9 +1,10 @@
 # Cache Me Outside — TryHackMe OSINT Writeup
 
-**Room:** [Cache Me Outside](https://tryhackme.com/room/cachemeoutside)
-**Category:** OSINT / Active OSINT
-**Difficulty:** Easy–Medium
-**Objective:** Identify a retired hacker and trace his real-world movements using only publicly available information.
+**Author:** [Saeed Elfiky](https://saeed8elfiky.github.io/portfolio) ([GitHub](https://github.com/saeed8elfiky) | [TryHackMe](https://tryhackme.com/p/saeed8elfiky) | [LinkedIn](https://www.linkedin.com/in/saeed-elfiky) | [Email](mailto:saeedelfikybusiness@gmail.com))  
+**Room / Lab:** [Cache Me Outside](https://tryhackme.com/room/cachemeoutside)  
+**Category:** OSINT / Active OSINT  
+**Difficulty:** Easy–Medium  
+**Objective:** Identify a retired hacker and trace his real-world movements using only publicly available information.  
 
 ---
 
