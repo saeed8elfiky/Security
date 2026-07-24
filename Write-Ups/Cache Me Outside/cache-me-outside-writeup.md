@@ -23,7 +23,7 @@ Active OSINT (email) → Threads → Image geolocation → Google Maps
 
 The provided screenshot shows a conversation between two users:
 
-<img src="assets/conversation_screen_shoot.png" alt="conversation_screen_shoot" width="300" height="200">
+<img src="assets/conversation_screen_shoot.png" alt="conversation_screen_shoot" width="1080" height=auto>
 
 - **Target:** `JJ^_^`
 - **Secondary contact:** `WKM1337?`
