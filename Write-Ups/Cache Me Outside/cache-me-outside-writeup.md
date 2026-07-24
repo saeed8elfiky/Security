@@ -41,7 +41,7 @@ Komoot is a route-planning platform for hiking and cycling. Profiles on it commo
 
 ## 2. Pivoting from Komoot to GitHub
 
-<img src="assets/komoot_profile.png" alt="" width="300" height="200">
+<img src="assets/komoot_profile.png" alt="" width="1080" height=auto>
 
 The Komoot profile resolves to:
 
@@ -52,7 +52,7 @@ This is the first real identity anchor: a name, tied to a platform, tied to a se
 
 ### GitHub Enumeration
 
-<img src="assets/github_acc.png" alt="" width="300" height="200">
+<img src="assets/github_acc.png" alt="" width="1080" height=auto>
 Visiting the linked GitHub profile:
 
 - **Username:** `jiml33t`
@@ -89,7 +89,7 @@ With a real email address in hand, the investigation shifts from *passive* to *a
 
 Sending an email to `jimleepro1@gmail.com` triggers an **automatic out-of-office / business auto-reply**, which discloses:
 
-<img src="assets/Email_response.png" alt="" width="300" height="200">
+<img src="assets/Email_response.png" alt="" width="1080" height=auto>
 
 - **Phone number:** `+40 743 321 239`
 - **Another username:** `0x4A4C`
@@ -125,7 +125,7 @@ Instagram doesn't offer much beyond confirming the name. **Threads is where the 
 
 ## 5. Geolocating the Threads Photo
 
-<img src="assets/thread.png" alt="" width="300" height="200">
+<img src="assets/thread.png" alt="" width="1080" height=auto>
 
 The Threads post shows the target at a supermarket, with a storefront sign reading:
 
@@ -133,7 +133,7 @@ The Threads post shows the target at a supermarket, with a storefront sign readi
 IRIGATII.RO
 ```
 
-<img src="assets/map.png" alt="" width="300" height="200">
+<img src="assets/map.png" alt="" width="1080" height=auto>
 
 This is a Romanian agricultural/irrigation supply company name — a distinctive enough search term to plug straight into Google Maps. That search resolves to a specific store location:
 
