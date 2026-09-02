@@ -21,6 +21,10 @@ An n8n automation that monitors an inbox via IMAP, extracts metadata/attachments
 
 ## Overview
 
+<p align="center">
+      <img src="Email Analysis.png" width="600">
+   </p>
+
 `Email Analysis` is an n8n workflow that acts as an automated first-line triage tool for incoming email. On every new message, it:
 
 1. Parses headers, SPF/DKIM/DMARC results, body text/HTML, and any URLs.
@@ -33,6 +37,10 @@ An n8n automation that monitors an inbox via IMAP, extracts metadata/attachments
 ---
 
 ## Architecture
+
+<p align="center">
+      <img src="workflow_n8n.png" width="900">
+   </p>
 
 ```
 Email Trigger (IMAP)
